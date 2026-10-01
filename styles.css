@@ -47,7 +47,7 @@ img {
   letter-spacing: 1px;
   text-transform: uppercase;
   border-radius: 4px;
-  cursor: default;
+  cursor: pointer;
   transition: all 0.3s ease;
   border: none;
   font-family: "Montserrat", sans-serif;
@@ -59,10 +59,11 @@ img {
   border: 2px solid #ffffff;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .btn-primary:hover {
-  color: #0f1629;
+  color: #000000;
 }
 
 .btn-primary::before {
@@ -70,17 +71,18 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 150%;
-  height: 150%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 50%;
-  transition: all 0.5s ease;
+  transition: width 0.7s ease, height 0.7s ease;
   z-index: -1;
 }
 
 .btn-primary:hover::before {
-  transform: translate(-50%, -50%) scale(0);
+  width: 250%;
+  height: 600%;
 }
 
 .btn-outline {
@@ -89,6 +91,7 @@ img {
   color: #c73b3b;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .btn-outline:hover {
@@ -103,12 +106,12 @@ img {
   width: 0%;
   height: 100%;
   background-color: #c73b3b;
-  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+  transition: width cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
   z-index: -1;
 }
 
 .btn-outline:hover::before {
-  width: 0%;
+  width: 100%;
 }
 
 .section-title {
@@ -672,7 +675,8 @@ img {
 .news-image img {
   width: 100%;
   height: 100%;
-  object-fit: unset;
+  object-fit: cover;
+  object-position: top;
 }
 
 .news-card:nth-child(1) .news-image {
